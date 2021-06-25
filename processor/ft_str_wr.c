@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_str_width(t_flags flags, char *str) // static ?
+int	ft_str_width(t_flags flags, char *str)
 {
 	int len;
 
@@ -23,7 +23,7 @@ int	ft_str_width(t_flags flags, char *str) // static ?
 		len += ft_putstr(flags.acc, str);
 	}
 	else
-		len += ft_putstr(flags.acc, str);
+		len += ft_putstr(ft_strlen(str), str);
 	return (len);
 }
 

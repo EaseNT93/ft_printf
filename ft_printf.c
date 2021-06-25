@@ -91,13 +91,14 @@ int	ft_printf(const char *format, ...)
 	va_list		ap;
 	const char	*data;
 
+	len = 0;
 	if (NULL == format)
 		return (0);
 	data = ft_strdup(format);
 	if (NULL == data)
 		return (-1);
 	va_start(ap, format);
-	len = ft_format_parse(data, ap);
+	len += ft_format_parse(data, ap);
 	va_end(ap);
 	free((char *)data);
 	return (len);

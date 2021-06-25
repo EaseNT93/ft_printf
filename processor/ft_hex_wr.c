@@ -14,9 +14,9 @@
 
 char	*ft_dec_in_base(unsigned long long i, int base)
 {
-	char	*str_i;
-	int		c;
-	int		tmp_i;
+	char					*str_i;
+	int						c;
+	unsigned long long		tmp_i;
 
 	c = 0;
 	tmp_i = i;
@@ -31,12 +31,12 @@ char	*ft_dec_in_base(unsigned long long i, int base)
 	if (NULL == str_i)
 		return (NULL);
 	str_i[c--] = '\0';
-	while (c)
+	while (i)
 	{
 		if ((i % base) < 10)
-			str_i[c] = i % base + 48;
+			str_i[c] = (i % base) + 48;
 		else
-			str_i[c] = i % base + 87;
+			str_i[c] = (i % base) + 87;
 		i /= base;
 		c--;
 	}
