@@ -34,7 +34,7 @@ int	ft_str_wr(t_flags flags, char *str)
 	len = 0;
 	if (str == NULL)
 		str = "(null)";
-	if (flags.acc >= 0 && flags.acc > ft_strlen(str))
+	if (flags.acc >= 0 && (size_t)flags.acc > ft_strlen(str))
 		flags.acc = ft_strlen(str);
 	if (flags.minus == 1)
 		len += ft_str_width(flags, str);

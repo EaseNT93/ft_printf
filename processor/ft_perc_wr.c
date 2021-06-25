@@ -12,15 +12,15 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_prec_wr(t_flags flags)
+int	ft_perc_wr(t_flags flags)
 {
 	int len;
 
-	len = 0;
+	len = 1;
 	if (flags.minus == 1)
-		write(1, '%', 1);
+		write(1, "%", 1);
 	len += ft_other_wr(flags.zero, flags.width, 1);
 	if (flags.minus == 0)
-		write(1, '%', 1);
-	return (len + 1);
+		write(1, "%", 1);
+	return (len);
 }

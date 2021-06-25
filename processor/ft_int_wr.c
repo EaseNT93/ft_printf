@@ -24,6 +24,7 @@ int	ft_i_len(int i)
 		if (i == 0)
 			return (i_len);
 	}
+	return (i_len);
 }
 
 int	ft_int_zero_wr(t_flags flags, int i)
@@ -34,7 +35,7 @@ int	ft_int_zero_wr(t_flags flags, int i)
 	len = 0;
 	if (i < 0)
 	{
-		write(1, '-', 1);
+		write(1, "-", 1);
 		len++;
 		if (i == -2147483648)
 			str_i = ft_strdup("2147483648");

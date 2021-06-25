@@ -13,9 +13,10 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "../libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
-# include "libft.h"
+# include <unistd.h>
 
 typedef struct	s_flags
 {
@@ -40,8 +41,9 @@ int		ft_flag_check(int i);
 int		ft_type_check(int i);
 
 int		ft_char_wr(t_flags flags, char i);
+int		ft_hex_wr(t_flags flags, int case_size, unsigned int i);
 int		ft_str_wr(t_flags flags, char *str);
-int		ft_prec_wr(t_flags flags);
+int		ft_perc_wr(t_flags flags);
 int		ft_int_wr(t_flags flags, int i);
 int		ft_un_int_wr(t_flags flags, unsigned int i);
 int		ft_p_wr(t_flags flags, unsigned long long i);

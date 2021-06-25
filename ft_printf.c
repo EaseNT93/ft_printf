@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
 t_flags	ft_flags_init(void)
 {
@@ -36,11 +36,11 @@ int	ft_flags_parse(const char *data, va_list ap, t_flags *flags, int i)
 		if (data[i] == '.')
 			i = ft_dot_flag(data, ap, flags, i);
 		if (data[i] == '-')
-			flags = ft_minus_flag(*flags);
+			*flags = ft_minus_flag(*flags);
 		if (data[i] == '*')
-			flags = ft_star_flag(ap, flags);
+			*flags = ft_star_flag(ap, *flags);
 		if (ft_isdigit(data[i]))
-			flags = ft_digit_flag(flags, data[i]);
+			*flags = ft_digit_flag(*flags, data[i]);
 		if (ft_type_check(data[i]))
 		{
 			flags->type = data[i];
@@ -99,6 +99,6 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	len = ft_format_parse(data, ap);
 	va_end(ap);
-	free(data);
+	free((char *)data);
 	return (len);
 }

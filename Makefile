@@ -8,7 +8,7 @@ SRC =	ft_printf.c\
 		processor/ft_int_wr.c\
 		processor/ft_other_wr.c\
 		processor/ft_perc_wr.c\
-		processor/ft_cpointer_wr.c\
+		processor/ft_pointer_wr.c\
 		processor/ft_str_wr.c\
 		processor/ft_un_int_wr.c
 
@@ -23,19 +23,21 @@ RM = rm -rf
 INCLUDES = -I./includes
 
 $(NAME): $(OBJ)
-		$(MAKE) bonus ./libft
+		$(MAKE) bonus -C ./libft
 		cp libft/libft.a $(NAME)
-		$(CC) $(FLAGS) $(INCLUDES) $(SRC)
+		$(CC) $(CFLAGS) $(INCLUDES) $(SRC)
 		ar -rcs $(NAME) $(OBJ)
 
 all : $(NAME)
 
 clean:
-		$(MAKE) clean ./libft
+		$(MAKE) clean -C ./libft
+		$(RM) *wr.o
+		$(RM) *s.o
 		$(RM) $(OBJ)
 
 fclean: clean
-		$(MAKE) fclean ./libft
+		$(MAKE) fclean -C ./libft
 		$(RM) $(NAME)
 
 re: fclean all

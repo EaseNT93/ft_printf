@@ -21,7 +21,7 @@ char	*ft_dec_in_base(unsigned long long i, int base)
 	c = 0;
 	tmp_i = i;
 	if (i == 0)
-			retunr (str_i = ft_strdup("0"));
+			return (str_i = ft_strdup("0"));
 	while (tmp_i > 0)
 	{
 		tmp_i /= base;
@@ -54,7 +54,7 @@ int	ft_ui_wr(t_flags flags, char *str_i)
 			len += ft_other_wr(1, flags.acc, ft_strlen(str_i));
 		len += ft_putstr(ft_strlen(str_i), str_i);
 	}
-	if (flags.acc > 0 && ft_strlen(str_i) > flags.acc)
+	if (flags.acc > 0 && (ft_strlen(str_i) > (size_t)flags.acc))
 		len += ft_other_wr(0, flags.width, ft_strlen(str_i));
 	else if (flags.acc > 0)
 		len += ft_other_wr(0, flags.width, flags.acc);
@@ -76,7 +76,7 @@ int	ft_hex_wr(t_flags flags, int case_size, unsigned int i)
 	char	*str_i;
 
 	len = 0;
-	c = 0;
+	c = -1;
 	if (i == 0 && flags.acc == 0)
 	{
 		len += ft_other_wr(0, flags.width, 0);
@@ -84,8 +84,8 @@ int	ft_hex_wr(t_flags flags, int case_size, unsigned int i)
 	}
 	str_i = ft_dec_in_base(i, 16);
 	if (case_size)
-		while (str_i[c])
-			str_i[c++] = ft_toupper(str_i[c]);
+		while (str_i[++c])
+			str_i[c] = ft_toupper(str_i[c]);
 	len += ft_ui_wr(flags, str_i);
 	free(str_i);
 	return (len);
