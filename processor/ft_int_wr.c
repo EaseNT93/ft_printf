@@ -17,8 +17,13 @@ int	ft_i_len(int i)
 	int	i_len;
 
 	i_len = 0;
+	if (i == -2147483648)
+		return (11);
 	if (i < 0)
+	{
 		i_len++;
+		i = -i;
+	}
 	while (i >= 0)
 	{
 		i_len++;
@@ -65,7 +70,7 @@ int	ft_int_wr(t_flags flags, int i)
 	}
 	if (flags.minus == 1)
 		len += ft_int_zero_wr(flags, i);
-	if (flags.acc >= 0)
+	if (flags.acc > 0)
 	{
 		if (flags.acc < ft_i_len(i))
 			len += ft_other_wr(0, flags.width, ft_i_len(i));
@@ -73,11 +78,7 @@ int	ft_int_wr(t_flags flags, int i)
 			len += ft_other_wr(0, flags.width, flags.acc);
 	}
 	else
-	{
-		if (i < 0)
-			flags.width--;
 		len += ft_other_wr(flags.zero , flags.width, ft_i_len(i));
-	}
 	if (flags.minus == 0)
 		len += ft_int_zero_wr(flags, i);
 	return (len);

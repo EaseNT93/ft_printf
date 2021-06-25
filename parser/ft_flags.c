@@ -19,6 +19,8 @@ int	ft_dot_flag(const char *data, va_list ap, t_flags *flags, int i)
 	{
 		flags->acc = va_arg(ap, int);
 		i++;
+		if (flags->acc == 0)
+			flags->zero = 0;
 	}
 	else
 	{
@@ -47,6 +49,7 @@ t_flags	ft_star_flag(va_list ap, t_flags flags)
 	{
 		flags.minus = 1;
 		flags.width *= -1;
+		flags.zero = 0;
 	}
 	return (flags);
 }
