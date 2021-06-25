@@ -17,6 +17,8 @@ int	ft_i_len(int i)
 	int	i_len;
 
 	i_len = 0;
+	if (i < 0)
+		i_len++;
 	while (i >= 0)
 	{
 		i_len++;
@@ -66,8 +68,9 @@ int	ft_int_wr(t_flags flags, int i)
 	if (flags.acc >= 0)
 	{
 		if (flags.acc < ft_i_len(i))
-			flags.acc = ft_i_len(i);
-		len += ft_other_wr(0, flags.width, flags.acc);
+			len += ft_other_wr(0, flags.width, ft_i_len(i));
+		else
+			len += ft_other_wr(0, flags.width, flags.acc);
 	}
 	else
 	{
