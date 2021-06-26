@@ -53,6 +53,8 @@ int	ft_int_zero_wr(t_flags flags, int i)
 		str_i = ft_itoa(i);
 	if (flags.acc > 0)
 		len += ft_other_wr(1, flags.acc, ft_strlen(str_i));
+	else if (flags.zero)
+		len += ft_other_wr(1, flags.width, ft_strlen(str_i) + len);
 	len += ft_putstr(ft_strlen(str_i), str_i);
 	free(str_i);
 	return (len);
@@ -72,12 +74,16 @@ int	ft_int_wr(t_flags flags, int i)
 		len += ft_int_zero_wr(flags, i);
 	if (flags.acc > 0)
 	{
-		if (flags.acc < ft_i_len(i))
+		if (len > 0)
+			len += ft_other_wr(0, flags.width, len);
+		else if (flags.acc < ft_i_len(i))
 			len += ft_other_wr(0, flags.width, ft_i_len(i));
-		else
+		else if (i >= 0)
 			len += ft_other_wr(0, flags.width, flags.acc);
+		else
+			len += ft_other_wr(0, flags.width - 1, flags.acc);
 	}
-	else
+	else if (!flags.zero)
 		len += ft_other_wr(flags.zero , flags.width, ft_i_len(i));
 	if (flags.minus == 0)
 		len += ft_int_zero_wr(flags, i);

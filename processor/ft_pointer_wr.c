@@ -31,11 +31,9 @@ int	ft_p_wr(t_flags flags, unsigned long long i)
 
 	len = 0;
 	str_i = ft_dec_in_base(i, 16);
-	if ((size_t)flags.acc < ft_strlen(str_i))
-		flags.acc = ft_strlen(str_i);
 	if (flags.minus == 1)
 		len += ft_zero_p_wr(flags, str_i);
-	len += ft_other_wr(0, flags.width - 2, flags.acc);
+	len += ft_other_wr(0, flags.width - 2, ft_strlen(str_i));
 	if (flags.minus == 0)
 		len += ft_zero_p_wr(flags, str_i);
 	free(str_i);
