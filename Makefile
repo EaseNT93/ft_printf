@@ -14,6 +14,17 @@ SRC =	ft_printf.c\
 
 OBJ = $(SRC:.c=.o)
 
+OBJO = 	ft_flags.o\
+		ft_parses.o\
+		ft_char_wr.o\
+		ft_hex_wr.o\
+		ft_int_wr.o\
+		ft_other_wr.o\
+		ft_perc_wr.o\
+		ft_pointer_wr.o\
+		ft_str_wr.o\
+		ft_un_int_wr.o
+
 CFLAGS = -Wall -Wextra -Werror -c
 
 CC = gcc
@@ -32,8 +43,7 @@ all : $(NAME)
 
 clean:
 		$(MAKE) clean -C ./libft
-		$(RM) *wr.o
-		$(RM) *s.o
+		$(RM) $(OBJO)
 		$(RM) $(OBJ)
 
 fclean: clean
