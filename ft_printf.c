@@ -60,23 +60,16 @@ int	ft_format_parse(const char *data, va_list ap)
 
 	len = 0;
 	i = 0;
-	while (1)
+	while (data[i])
 	{
 		flags = ft_flags_init();
-		if (!data[i])
-			break ;
 		if (data[i] == '%' && data[i + 1])
 		{
 			i = ft_flags_parse(data, ap, &flags, i + 1);
 			if (ft_type_check(data[i]))
 				len += ft_type_parse(ap, flags, flags.type);
-			else if (data[i])
-			{
-				ft_putchar_fd(data[i], 1);
-				len++;
-			}
 		}
-		else if (data[i] != '%')
+		else
 		{
 			ft_putchar_fd(data[i], 1);
 			len++;

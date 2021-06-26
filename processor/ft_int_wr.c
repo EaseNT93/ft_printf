@@ -74,9 +74,7 @@ int	ft_int_wr(t_flags flags, int i)
 		len += ft_int_zero_wr(flags, i);
 	if (flags.acc > 0)
 	{
-		if (len > 0)
-			len += ft_other_wr(0, flags.width, len);
-		else if (flags.acc < ft_i_len(i))
+		if (flags.acc < ft_i_len(i))
 			len += ft_other_wr(0, flags.width, ft_i_len(i));
 		else if (i >= 0)
 			len += ft_other_wr(0, flags.width, flags.acc);
