@@ -64,14 +64,15 @@ int	ft_format_parse(const char *data, va_list ap)
 	{
 		flags = ft_flags_init();
 		if (data[i] == '%' && data[i + 1])
-			i = ft_flags_parse(data, ap, &flags, i + 1);
-		if (ft_type_check(data[i]))
-			len += ft_type_parse(ap, flags, flags.type);
-		else
 		{
-			ft_putchar_fd(data[i], 1);
-			len++;
+			i = ft_flags_parse(data, ap, &flags, i + 1);
+			if (ft_type_check(data[i]))
+				len += ft_type_parse(ap, flags, flags.type);
+			else
+				len += ft_putstr(1, data[i]);
 		}
+		else
+			len += ft_putstr(1, data[i]);
 		i++;
 	}
 	return (len);
