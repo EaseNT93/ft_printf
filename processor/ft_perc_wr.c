@@ -14,7 +14,7 @@
 
 int	ft_perc_wr(t_flags flags)
 {
-	int len;
+	int	len;
 
 	len = 1;
 	if (flags.minus == 1)

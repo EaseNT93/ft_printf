@@ -14,7 +14,7 @@
 
 int	ft_str_width(t_flags flags, char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (flags.acc >= 0)
@@ -29,7 +29,7 @@ int	ft_str_width(t_flags flags, char *str)
 
 int	ft_str_wr(t_flags flags, char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (str == NULL)

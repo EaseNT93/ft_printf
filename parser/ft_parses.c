@@ -14,8 +14,8 @@
 
 int	ft_type_check(int i)
 {
-	if (i == 'c' || i == 's' || i == 'p' || i == 'd' || i == 'i' || 
-	i == 'u' || i == 'x' || i == 'X' || i == '%')
+	if (i == 'c' || i == 's' || i == 'p' || i == 'd' || i == 'i' \
+	|| i == 'u' || i == 'x' || i == 'X' || i == '%')
 		return (1);
 	else
 		return (0);

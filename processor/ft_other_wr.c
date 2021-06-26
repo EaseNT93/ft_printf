@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_other_wr(int zero_flag, int width, int arg_len) /// заменить 2 и 3 парам их разницей
+int	ft_other_wr(int zero_flag, int width, int arg_len)
 {
 	int	len;
 
@@ -31,7 +31,7 @@ int	ft_other_wr(int zero_flag, int width, int arg_len) /// заменить 2 и
 
 int	ft_putstr(int acc, char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (str[len] && len < acc)

@@ -29,7 +29,8 @@ int	ft_flags_parse(const char *data, va_list ap, t_flags *flags, int i)
 {
 	while (data[i])
 	{
-		if (!ft_isdigit(data[i]) && !ft_flag_check(data[i]) && !ft_type_check(data[i]))
+		if (!ft_isdigit(data[i]) && !ft_flag_check(data[i]) \
+		&& !ft_type_check(data[i]))
 			break ;
 		if (data[i] == '0' && flags->width == 0 && flags->minus == 0)
 			flags->zero = 1;

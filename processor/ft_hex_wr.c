@@ -21,15 +21,13 @@ char	*ft_dec_in_base(unsigned long long i, int base)
 	c = 0;
 	tmp_i = i;
 	if (i == 0)
-			return (str_i = ft_strdup("0"));
+		return (str_i = ft_strdup("0"));
 	while (tmp_i > 0)
 	{
 		tmp_i /= base;
 		c++;
 	}
 	str_i = malloc(sizeof(char) * (c + 1));
-	if (NULL == str_i)
-		return (NULL);
 	str_i[c--] = '\0';
 	while (i)
 	{
