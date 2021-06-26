@@ -20,7 +20,7 @@ int	ft_un_int_wr(t_flags flags, unsigned int i)
 	len = 0;
 	if (i == 0 && flags.acc == 0)
 	{
-		len += ft_other_wr(0, flags.width, 0);
+		len += ft_other_wr(0, flags.width);
 		return (len);
 	}
 	str_i = ft_dec_in_base(i, 10);

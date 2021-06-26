@@ -51,7 +51,7 @@ int		ft_ui_wr(t_flags flags, char *str_i);
 
 char	*ft_dec_in_base(unsigned long long i, int base);
 int		ft_ui_wr(t_flags flags, char *str_i);
-int		ft_other_wr(int zero_flag, int width, int arg_len);
+int		ft_other_wr(int zero_flag, int width);
 int		ft_putstr(int acc, char *str);
 
 #endif

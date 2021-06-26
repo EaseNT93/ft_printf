@@ -52,9 +52,9 @@ int	ft_int_zero_wr(t_flags flags, int i)
 	if (i != -2147483648)
 		str_i = ft_itoa(i);
 	if (flags.acc > 0)
-		len += ft_other_wr(1, flags.acc, ft_strlen(str_i));
+		len += ft_other_wr(1, flags.acc - ft_strlen(str_i));
 	else if (flags.zero)
-		len += ft_other_wr(1, flags.width, ft_strlen(str_i) + len);
+		len += ft_other_wr(1, flags.width - ft_strlen(str_i) - len);
 	len += ft_putstr(ft_strlen(str_i), str_i);
 	free(str_i);
 	return (len);
@@ -67,7 +67,7 @@ int	ft_int_wr(t_flags flags, int i)
 	len = 0;
 	if (i == 0 && flags.acc == 0)
 	{
-		len += ft_other_wr(0, flags.width, 0);
+		len += ft_other_wr(0, flags.width);
 		return (len);
 	}
 	if (flags.minus == 1)
@@ -75,14 +75,14 @@ int	ft_int_wr(t_flags flags, int i)
 	if (flags.acc > 0)
 	{
 		if (flags.acc < ft_i_len(i))
-			len += ft_other_wr(0, flags.width, ft_i_len(i));
+			len += ft_other_wr(0, flags.width - ft_i_len(i));
 		else if (i >= 0)
-			len += ft_other_wr(0, flags.width, flags.acc);
+			len += ft_other_wr(0, flags.width - flags.acc);
 		else
-			len += ft_other_wr(0, flags.width - 1, flags.acc);
+			len += ft_other_wr(0, flags.width - flags.acc - 1);
 	}
 	else if (!flags.zero)
-		len += ft_other_wr(flags.zero, flags.width, ft_i_len(i));
+		len += ft_other_wr(flags.zero, flags.width - ft_i_len(i));
 	if (flags.minus == 0)
 		len += ft_int_zero_wr(flags, i);
 	return (len);

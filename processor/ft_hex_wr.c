@@ -49,19 +49,19 @@ int	ft_ui_wr(t_flags flags, char *str_i)
 	if (flags.minus == 1)
 	{
 		if (flags.acc > 0)
-			len += ft_other_wr(1, flags.acc, ft_strlen(str_i));
+			len += ft_other_wr(1, flags.acc - ft_strlen(str_i));
 		len += ft_putstr(ft_strlen(str_i), str_i);
 	}
 	if (flags.acc > 0 && (ft_strlen(str_i) > (size_t)flags.acc))
-		len += ft_other_wr(0, flags.width, ft_strlen(str_i));
+		len += ft_other_wr(0, flags.width - ft_strlen(str_i));
 	else if (flags.acc > 0)
-		len += ft_other_wr(0, flags.width, flags.acc);
+		len += ft_other_wr(0, flags.width - flags.acc);
 	else
-		len += ft_other_wr(flags.zero, flags.width, ft_strlen(str_i));
+		len += ft_other_wr(flags.zero, flags.width - ft_strlen(str_i));
 	if (flags.minus == 0)
 	{
 		if (flags.acc > 0)
-			len += ft_other_wr(1, flags.acc, ft_strlen(str_i));
+			len += ft_other_wr(1, flags.acc - ft_strlen(str_i));
 		len += ft_putstr(ft_strlen(str_i), str_i);
 	}
 	return (len);
@@ -77,7 +77,7 @@ int	ft_hex_wr(t_flags flags, int case_size, unsigned int i)
 	c = -1;
 	if (i == 0 && flags.acc == 0)
 	{
-		len += ft_other_wr(0, flags.width, 0);
+		len += ft_other_wr(0, flags.width);
 		return (len);
 	}
 	str_i = ft_dec_in_base(i, 16);

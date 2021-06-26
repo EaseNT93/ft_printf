@@ -12,12 +12,12 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_other_wr(int zero_flag, int width, int arg_len)
+int	ft_other_wr(int zero_flag, int width)
 {
 	int	len;
 
 	len = 0;
-	while (width - arg_len > 0)
+	while (width > 0)
 	{
 		if (zero_flag)
 			ft_putchar_fd('0', 1);

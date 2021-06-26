@@ -19,7 +19,7 @@ int	ft_char_wr(t_flags flags, char i)
 	len = 1;
 	if (flags.minus == 1)
 		ft_putchar_fd(i, 1);
-	len += ft_other_wr(0, flags.width, 1);
+	len += ft_other_wr(0, flags.width - 1);
 	if (flags.minus == 0)
 		ft_putchar_fd(i, 1);
 	return (len);
