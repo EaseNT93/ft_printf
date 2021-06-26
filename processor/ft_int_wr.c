@@ -72,7 +72,7 @@ int	ft_int_wr(t_flags flags, int i)
 	}
 	if (flags.minus == 1)
 		len += ft_int_zero_wr(flags, i);
-	if (flags.acc > 0)
+	if (flags.acc >= 0)
 	{
 		if (flags.acc < ft_i_len(i))
 			len += ft_other_wr(0, flags.width - ft_i_len(i));
