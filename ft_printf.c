@@ -52,7 +52,7 @@ int	ft_flags_parse(const char *data, va_list ap, t_flags *flags, int i)
 	return (i);
 }
 
-int	ft_format_parse(const char *data, va_list ap)
+int	ft_format_parse(char *data, va_list ap)
 {
 	int		len;
 	int		i;
@@ -69,10 +69,10 @@ int	ft_format_parse(const char *data, va_list ap)
 			if (ft_type_check(data[i]))
 				len += ft_type_parse(ap, flags, flags.type);
 			else
-				len += ft_putstr(1, data[i]);
+				len += ft_putstr(1, &data[i]);
 		}
 		else
-			len += ft_putstr(1, data[i]);
+			len += ft_putstr(1, &data[i]);
 		i++;
 	}
 	return (len);
@@ -80,9 +80,9 @@ int	ft_format_parse(const char *data, va_list ap)
 
 int	ft_printf(const char *format, ...)
 {
-	int			len;
-	va_list		ap;
-	const char	*data;
+	int		len;
+	va_list	ap;
+	char	*data;
 
 	len = 0;
 	if (NULL == format)
@@ -93,6 +93,6 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	len += ft_format_parse(data, ap);
 	va_end(ap);
-	free((char *)data);
+	free(data);
 	return (len);
 }
