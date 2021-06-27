@@ -48,11 +48,11 @@ int	ft_ui_wr(t_flags flags, char *str_i)
 	len = 0;
 	if (flags.minus == 1)
 	{
-		if (flags.acc > 0)
+		if (flags.acc >= 0)
 			len += ft_other_wr(1, flags.acc - ft_strlen(str_i));
 		len += ft_putstr(ft_strlen(str_i), str_i);
 	}
-	if (flags.acc > 0 && (ft_strlen(str_i) > (size_t)flags.acc))
+	if (flags.acc >= 0 && (ft_strlen(str_i) > (size_t)flags.acc))
 		len += ft_other_wr(0, flags.width - ft_strlen(str_i));
 	else if (flags.acc > 0)
 		len += ft_other_wr(0, flags.width - flags.acc);
@@ -60,7 +60,7 @@ int	ft_ui_wr(t_flags flags, char *str_i)
 		len += ft_other_wr(flags.zero, flags.width - ft_strlen(str_i));
 	if (flags.minus == 0)
 	{
-		if (flags.acc > 0)
+		if (flags.acc >= 0)
 			len += ft_other_wr(1, flags.acc - ft_strlen(str_i));
 		len += ft_putstr(ft_strlen(str_i), str_i);
 	}

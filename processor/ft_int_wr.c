@@ -51,7 +51,7 @@ int	ft_int_zero_wr(t_flags flags, int i)
 	}
 	if (i != -2147483648)
 		str_i = ft_itoa(i);
-	if (flags.acc > 0)
+	if (flags.acc >= 0)
 		len += ft_other_wr(1, flags.acc - ft_strlen(str_i));
 	else if (flags.zero)
 		len += ft_other_wr(1, flags.width - ft_strlen(str_i) - len);
