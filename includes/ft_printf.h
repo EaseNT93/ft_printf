@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <unistd.h>
 
-typedef struct	s_flags
+typedef struct s_flags
 {
 	int	width;
 	int	acc;

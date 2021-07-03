@@ -37,7 +37,7 @@ int	ft_p_wr(t_flags flags, unsigned long long i)
 	if (flags.minus == 1)
 		len += ft_zero_p_wr(flags, str_i, i);
 	if (flags.acc == 0 && i == 0)
-		len += ft_other_wr(0, flags.width  - 2);
+		len += ft_other_wr(0, flags.width - 2);
 	else
 		len += ft_other_wr(0, flags.width - ft_strlen(str_i) - 2);
 	if (flags.minus == 0)
