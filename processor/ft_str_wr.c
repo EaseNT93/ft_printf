@@ -39,9 +39,9 @@ int	ft_str_wr(t_flags flags, char *str)
 	if (flags.minus == 1)
 		len += ft_str_width(flags, str);
 	if (flags.acc >= 0)
-		len += ft_other_wr(0, flags.width - flags.acc);
+		len += ft_other_wr(flags.zero, flags.width - flags.acc);
 	else
-		len += ft_other_wr(0, flags.width - ft_strlen(str));
+		len += ft_other_wr(flags.zero, flags.width - ft_strlen(str));
 	if (flags.minus == 0)
 		len += ft_str_width(flags, str);
 	return (len);

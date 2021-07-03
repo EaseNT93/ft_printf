@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_zero_p_wr(t_flags flags, char *str_i)
+int	ft_zero_p_wr(t_flags flags, char *str_i, int i)
 {
 	int	len;
 
@@ -20,7 +20,10 @@ int	ft_zero_p_wr(t_flags flags, char *str_i)
 	write(1, "0x", 2);
 	if (flags.acc > 0)
 		len += ft_other_wr(1, flags.acc - ft_strlen(str_i));
-	len += ft_putstr(ft_strlen(str_i), str_i);
+	if (flags.acc == 0 && i == 0)
+		return (len);
+	else
+		len += ft_putstr(ft_strlen(str_i), str_i);
 	return (len);
 }
 
@@ -32,10 +35,13 @@ int	ft_p_wr(t_flags flags, unsigned long long i)
 	len = 0;
 	str_i = ft_dec_in_base(i, 16);
 	if (flags.minus == 1)
-		len += ft_zero_p_wr(flags, str_i);
-	len += ft_other_wr(0, flags.width - ft_strlen(str_i) - 2);
+		len += ft_zero_p_wr(flags, str_i, i);
+	if (flags.acc == 0 && i == 0)
+		len += ft_other_wr(0, flags.width  - 2);
+	else
+		len += ft_other_wr(0, flags.width - ft_strlen(str_i) - 2);
 	if (flags.minus == 0)
-		len += ft_zero_p_wr(flags, str_i);
+		len += ft_zero_p_wr(flags, str_i, i);
 	free(str_i);
 	return (len);
 }
